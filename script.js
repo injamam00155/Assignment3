@@ -1,3 +1,31 @@
+var today = new Date();
+var mm = today.getMonth();
+var dd = today.getDate();
+var yy = today.getFullYear();
+var hours = addZero(today.getHours());
+var mins = addZero(today.getMinutes());
+
+
+var day = today.getDay() - 1;
+console.log("Day: " + day);
+const month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+const daysName = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+var todayDate = `${dd}, ${month[mm]}, ${yy}`;
+var todaytime;
+var k = addZero(hours % 12);
+function addZero(num) {
+    return num < 10 ? `0${num}` : num;
+}
+if (hours > 12) {
+    var todaytime = `${k} : ${mins} PM`;
+} else {
+    var todaytime = `${hours}: ${mins} AM`;
+}
+document.getElementById("addDate").innerHTML = todayDate;
+document.getElementById("addTime").innerHTML = todaytime;
+
+
 var api = "https://api.openweathermap.org/data/2.5/forecast?q=Dhaka&appid=67a10e6b2833917d3e00f4edcd08f30f";
 apiKey = "83b5943a2f9f3ab384f95917b5ea4687";
 fetch(
@@ -36,9 +64,8 @@ document.getElementById("sCity").addEventListener("keydown", function (event) {
     }
 });
 
+
 function getDataOnClick() {
-
-
 
     var cityName = "Dhaka";
     cityName = document.getElementById("sCity").value;
@@ -84,8 +111,6 @@ function getDataOnClick() {
         console.log("Day: in:" + f);
         console.log("Day: " + i + ":" + f);
         document.getElementById("weekn" + (i + 1)).innerHTML = daysName[f];
-
-
     }
     console.log("Time: " + todaytime);
     console.log(" Date" + todayDate);
