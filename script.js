@@ -1,3 +1,12 @@
+var cityName ="" ;
+cityName = document.getElementById("sCity").value;
+cityName = cityName.toUpperCase()
+
+if(!cityName){
+    cityName="dhaka";
+}
+console.log(" City Name : "+cityName);
+
 var today = new Date();
 var mm = today.getMonth();
 var dd = today.getDate();
@@ -39,6 +48,12 @@ fetch(
         return response.json();
     })
     .then((data) => {
+        document.getElementById("d1feels_like").innerHTML = Number(data.list[0].main.feels_like).toFixed(1) + "&#176;C";
+        console.log(" day1 feels like : "+data.list[0].main.feels_like);
+        document.getElementById("d1humidity").innerHTML = data.list[0].main.humidity + "%";
+        console.log(" day1 humidtiy : "+data.list[0].main.humidity);
+
+
         for (i = 0; i < 5; i++) {
             document.getElementById("day" + (i + 1)).innerHTML = Number(data.list[i].main.temp).toFixed(1) + "&#176;C";
             console.log("day" + (i + 1) + " temp : " + data.list[i].main.temp)
@@ -57,22 +72,25 @@ fetch(
         }
         console.log(data)
     });
+
 document.getElementById("sCity").addEventListener("keydown", function (event) {
     if (event.keyCode === 13) {
         event.preventDefault();
         getDataOnClick();
     }
 });
-function capitalizeString(str) {
-    return str.substring(0, 1).toUpperCase() + str.substring(1);
-  }
-  
+
+
 
 function getDataOnClick() {
 
-    var cityName = "DHAKA";
+    var cityName ="" ;
     cityName = document.getElementById("sCity").value;
+    cityName = cityName.toUpperCase()
 
+    if(!cityName){
+        cityName="DHAKA";
+    }
 
     var today = new Date();
     var mm = today.getMonth();
@@ -127,6 +145,11 @@ function getDataOnClick() {
                 return response.json();
             })
             .then((data) => {
+                document.getElementById("d1feels_like").innerHTML = Number(data.list[0].main.feels_like).toFixed(1) + "&#176;C";
+                console.log(" day1 feels like : "+data.list[0].main.feels_like);
+                document.getElementById("d1humidity").innerHTML = data.list[0].main.humidity + "%";
+                console.log(" day1 humidtiy : "+data.list[0].main.humidity);
+
                 for (i = 0; i < 5; i++) {
                     document.getElementById("day" + (i + 1)).innerHTML = Number(data.list[i].main.temp).toFixed(1) + "&#176;C";
                     console.log("day" + (i + 1) + " temp : " + data.list[i].main.temp)
@@ -146,6 +169,4 @@ function getDataOnClick() {
                 console.log(data)
             });
     }
-
-    
 }

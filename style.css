@@ -243,6 +243,17 @@ html {
         width: 10vw;
       }
     .main-Weather .city{
+        font-size: 15px;
+    }
+    .main-Weather .degree
+    {
+        font-size: 30px;
+    }
+    
+    .main-Weather .top .left img{
+        width: 10vw;
+      }
+    .main-Weather .city{
         font-size: 20px;
     }
     .main-Weather .degree
