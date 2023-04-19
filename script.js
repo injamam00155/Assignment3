@@ -63,17 +63,15 @@ document.getElementById("sCity").addEventListener("keydown", function (event) {
         getDataOnClick();
     }
 });
-
+function capitalizeString(str) {
+    return str.substring(0, 1).toUpperCase() + str.substring(1);
+  }
+  
 
 function getDataOnClick() {
 
-    var cityName = "Dhaka";
+    var cityName = "DHAKA";
     cityName = document.getElementById("sCity").value;
-
-    if (!cityName) {
-        cityName = "dhaka";
-    }
-    console.log(" City Name : " + cityName);
 
 
     var today = new Date();
@@ -115,7 +113,7 @@ function getDataOnClick() {
     console.log("Time: " + todaytime);
     console.log(" Date" + todayDate);
     console.log(" Day: " + daysName[day]);
-
+    document.getElementsByClassName("city")[0].innerHTML = cityName;
     getWeatherInfo();
     function getWeatherInfo() {
         fetch(
